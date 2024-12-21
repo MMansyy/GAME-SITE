@@ -44,6 +44,12 @@ nav {
     color: #09c;
 }
 
+.fa-search {
+    right: 15px;
+    top: 9px;
+    font-size: 16px;
+}
+
 #games {
     background-color: var(--primary-color);
 }
