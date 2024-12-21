@@ -1,3 +1,6 @@
+import { getGameList, currentData } from "./game.module.js";
+
+const search_input = document.getElementById('search-input');
 
 
 
@@ -24,8 +27,8 @@ export function displayGames(data) {
                         </div>
                     </div>  
         `;
-        document.getElementById('games-data').innerHTML = cartona;
     }
+    document.getElementById('games-data').innerHTML = cartona;
 }
 
 
@@ -55,3 +58,23 @@ export function displaySpecificGame(data) {
     document.getElementById('details').classList.remove('d-none');
 
 }
+
+
+
+
+export async function searchGame() {
+    let data = currentData;
+    let search = search_input.value
+    let filtered = data.filter((game) => {
+        return game.title.toLowerCase().includes(search.toLowerCase());
+    })
+    if (filtered.length == 0) {
+        console.log("siu");
+        return document.getElementById('games-data').innerHTML = '<h1 class="alert alert-danger text-center">No Games Found</h1>';
+    }
+    displayGames(filtered);
+}
+
+
+search_input.addEventListener('input', searchGame);
+
