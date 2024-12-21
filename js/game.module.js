@@ -1,15 +1,13 @@
 import { getSpecificGame } from "./details.module.js";
 import { hideLoader, showLoader } from "./index.js";
 import { displayGames } from "./ui.module.js";
-
+let currentData;
 
 
 document.getElementById('games-data').addEventListener('click', function (e) {
     const clickedCard = e.target.closest('.card');
-    console.log(clickedCard.id);
     getSpecificGame(clickedCard.id);
 })
-
 
 export async function getGameList(category) {
     showLoader();
@@ -23,7 +21,14 @@ export async function getGameList(category) {
     };
     const res = await fetch(url, options);
     const data = await res.json();
+    currentData = data;
     console.log(data);
     displayGames(data);
     hideLoader();
 }
+
+
+export {
+    currentData
+}
+
