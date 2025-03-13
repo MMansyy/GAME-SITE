@@ -24,7 +24,8 @@ header img {
 nav {
     background-color: var(--secondary-color);
     font-size: 20px;
-    bottom: 30px;
+    transform: translateY(-30px);
+    
 }
 
 .nav-item a {
@@ -37,6 +38,13 @@ nav {
 
 .navbar-nav .nav-link.active {
     color: #09c;
+}
+
+@media screen and (min-width: 1024px) {
+    .w-md-75 {
+        width: 75% !important;
+    }
+    
 }
 
 .nav-link:focus,
